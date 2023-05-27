@@ -8,41 +8,43 @@
     <title>Document</title>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <style>
-        html,
-        body {
-            height: 100%;
+    <style>
+        @keyframes spinner {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
-        body {
-            display: grid;
-            place-items: center;
+        .is-loading {
+            color: transparent;
         }
 
-        .text-red {
-            color: red;
+        .is-loading:before {
+            content: '';
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin-top: -10px;
+            margin-left: -10px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            border-top-color: #000;
+            animation: spinner .6s linear infinite;
         }
-
-        .text-green {
-            color: green;
-        }
-    </style> -->
+    </style>
 </head>
 
 <body class="h-full grid place-items-center">
     <div id="app">
-        <app-button>Submit</app-button>
+        <app-button :processing="true">Submit</app-button>
     </div>
     <script type="module">
-        import AppButton from './js/components/AppButton.js'
-        let app = {
-            components: {
-                'app-button': AppButton,
-                'assignments-list': {},
-                'assignments-list-item': {}
-            }
-        };
-        Vue.createApp(app).mount('#app')
+        import App from './js/components/App.js'
+
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 
