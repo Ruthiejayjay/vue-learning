@@ -4,7 +4,7 @@ export default {
   template: `
     <div class="flex gap-2 mt-2">
     <button 
-      @click="$emit('change', tag)"
+      @click="currentTag = tag"
       v-for="tag in tags" 
       class="border rounded px-1 py-px text-xs"
       :class="{
