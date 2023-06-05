@@ -1,7 +1,7 @@
 
 
 export default {
-    template: `
+  template: `
     <div class="flex gap-2 mt-2">
     <button 
       @click="currentTag = tag"
@@ -14,19 +14,13 @@ export default {
       </button>
   </div>
     `,
-      props: {
-        initalTags: Array
-      },
+  props: {
+    initalTags: Array
+  },
 
-      data() {
-        return {
-            currentTag: 'all'
-        }
-      },
-
-    computed: {
-        tags() {
-            return ['all', ...new Set(this.initalTags)];
-          }
+  computed: {
+    tags() {
+      return ['all', ...new Set(this.initalTags)];
     }
+  }
 }
