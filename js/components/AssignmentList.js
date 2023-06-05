@@ -8,7 +8,10 @@ export default {
     {{ title }}
     <span>({{ assignments.length }})</span>
     </h2>
-    <assignment-tags :intial-tags="assignments.map(a => a.tag)"/>
+    <assignment-tags 
+    :initial-tags="assignments.map(a => a.tag)"
+    @change="currentTag = $event"
+    />
     <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
       <assignment v-for="assignment in filteredAssignments" :key="assignment.id" :assignment="assignment" ></assignment>
     </ul>
@@ -26,10 +29,10 @@ export default {
 
   computed: {
     filteredAssignments() {
-      if(this.currentTag === 'all') {
+      if (this.currentTag === 'all') {
         return this.assignments;
       }
-      return this.assignments.filter(e=>e.tag === this.currentTag);
+      return this.assignments.filter(e => e.tag === this.currentTag);
     },
   }
 }
